@@ -12,7 +12,7 @@ def get_average(sensor, window_size):
         window.append(sensor.range)
         sleep(0.01)
     return np.mean(window)
-    
+
 
 i2c = busio.I2C(board.SCL, board.SDA)
 
@@ -31,9 +31,8 @@ while True:
     distance2 = get_average(sensor2, window_size)
     distance3 = get_average(sensor3, window_size)
 
-    
     print("Sensor 1:", distance1/10, "cm")
     print("Sensor 2:", distance2/10, "cm")
     print("Sensor 3:", distance3/10, "cm")
+    sleep(0.5)
     os.system('cls' if os.name == 'nt' else 'clear')
-    sleep(0.05)
