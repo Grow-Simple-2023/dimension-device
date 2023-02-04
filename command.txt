@@ -1,0 +1,1 @@
+ pscp.exe -r pi@raspberrypi:/home/pi/test_images/ "E/Programming/Github_S/Grow-Simplee/dimension-device/"
