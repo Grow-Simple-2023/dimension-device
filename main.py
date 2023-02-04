@@ -28,13 +28,15 @@ window_size = 10
 
 while True:
     distance1 = get_average(sensor1, window_size)
+    sleep(0.5)
     distance2 = get_average(sensor2, window_size)
+    sleep(0.5)
     distance3 = get_average(sensor3, window_size)
+    sleep(0.5)
 
     print("---------------------------------")
     print("Sensor 1:", distance1/10, "cm")
     print("Sensor 2:", distance2/10, "cm")
     print("Sensor 3:", distance3/10, "cm")
     print("---------------------------------")
-    sleep(0.5)
     # os.system('cls' if os.name == 'nt' else 'clear')
