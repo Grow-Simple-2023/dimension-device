@@ -34,4 +34,4 @@ while True:
     print("Sensor 1:", distance1/10, "cm")
     print("Sensor 2:", distance2/10, "cm")
     print("Sensor 3:", distance3/10, "cm")
-    time.sleep(1)
+    sleep(0.1)
