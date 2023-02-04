@@ -1,2 +1,3 @@
 git pull
-sudo python init.py
+python init.py
+python main.py
