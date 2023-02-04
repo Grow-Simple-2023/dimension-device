@@ -20,8 +20,8 @@ sensor1 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2b)
 sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 
-
-window_size = 10
+total1, total2, total3 = 62.74, 65.65, 63.53
+window_size = 20
 
 
 while True:
@@ -32,9 +32,9 @@ while True:
     distance3 = get_average(sensor3, window_size)
     sleep(0.5)
     print("---------------------------------")
-    print("Sensor 1:", distance1/10, "cm")
-    print("Sensor 2:", distance2/10, "cm")
-    print("Sensor 3:", distance3/10, "cm")
+    print("Sensor 1:", total1 - distance1/10, "cm")
+    print("Sensor 2:", total2 - distance2/10, "cm")
+    print("Sensor 3:", total3 - distance3/10, "cm")
     print("---------------------------------")
     break
     # os.system('cls' if os.name == 'nt' else 'clear')
