@@ -20,10 +20,8 @@ sensor1 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2b)
 sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 
-off1, off2, off3 = 4.977, 8.135, 5.637
-sensor_height = 57.7
 
-window_size = 100
+window_size = 10
 
 
 while True:
