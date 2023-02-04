@@ -1,5 +1,5 @@
-from time import sleep
 import board
+from time import sleep
 import RPi.GPIO as GPIO
 from adafruit_vl53l0x import VL53L0X
 
