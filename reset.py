@@ -10,6 +10,6 @@ GPIO_ports = [15, 16, 18, 13, 22]
 
 for i in range(no_of_sensors):
     GPIO.setup(GPIO_ports[i], GPIO.OUT)
-    GPIO.output(GPIO_ports[i], GPIO.HIGH)
-    print(f"Set GPIO {GPIO_ports[i]} to HIGH")
+    GPIO.output(GPIO_ports[i], GPIO.LOW)
+    print(f"Set GPIO {GPIO_ports[i]} to LOW")
     sleep(0.1)
