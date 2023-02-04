@@ -27,7 +27,7 @@ total1, total2, total3 = 50.296, 53.157, 50.341
 
 window_size = 10
 
-max_time = 110
+max_time = 10
 start = time()
 
 maximum_distance = float('-inf')
@@ -43,7 +43,7 @@ while time()-start < max_time:
     print("Sensor 3:", distance3, "cm")
     print("---------------------------------")
     maximum_distance = max([distance1, distance2, distance3, maximum_distance])
+    print("Maximum distance:", maximum_distance, "cm")
     sleep(0.1)
     # os.system('cls' if os.name == 'nt' else 'clear')
 
-print("Maximum distance:", maximum_distance, "cm")
