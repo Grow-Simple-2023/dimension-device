@@ -18,3 +18,4 @@ for i in range(no_of_sensors):
 for i in range(no_of_sensors):
     GPIO.output(GPIO_ports[i], GPIO.HIGH)
     device.set_address(0x30+i)
+    GPIO.output(GPIO_ports[i], GPIO.LOW)
