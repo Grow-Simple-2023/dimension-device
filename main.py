@@ -11,7 +11,7 @@ def get_average(sensor, window_size):
     for i in range(window_size):
         window.append(sensor.range)
         sleep(0.01)
-    return np.max(window)
+    return np.mean(window)
 
 
 i2c = busio.I2C(board.SCL, board.SDA)
