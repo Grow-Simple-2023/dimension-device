@@ -8,9 +8,9 @@ device = VL53L0X(i2c)
 
 
 no_of_sensors = 3
-GPIO_ports = [22, 23, 24, 27, 25]
+GPIO_ports = [15, 16, 18, 13, 22]
 
-# GPIO.setmode(GPIO.BOARD)
+# GPIO.setmode(GPIO.BCM)
 
 for i in range(no_of_sensors):
     GPIO.setup(GPIO_ports[i], GPIO.OUT)
