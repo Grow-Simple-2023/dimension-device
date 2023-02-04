@@ -1,5 +1,6 @@
 from time import sleep
 import board
+import os
 import busio
 import numpy as np
 import adafruit_vl53l0x
@@ -9,7 +10,7 @@ def get_average(sensor, window_size):
     window = []
     for i in range(window_size):
         window.append(sensor.range)
-        sleep(0.05)
+        sleep(0.01)
     return np.mean(window)
     
 
@@ -34,4 +35,5 @@ while True:
     print("Sensor 1:", distance1/10, "cm")
     print("Sensor 2:", distance2/10, "cm")
     print("Sensor 3:", distance3/10, "cm")
-    sleep(0.1)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    sleep(0.05)
