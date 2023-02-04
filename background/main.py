@@ -1,6 +1,5 @@
 from time import sleep, time
 import board
-import os
 import busio
 import numpy as np
 import adafruit_vl53l0x
