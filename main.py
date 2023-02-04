@@ -1,4 +1,4 @@
-import time
+from time import sleep
 import board
 import busio
 import numpy as np
