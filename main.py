@@ -24,7 +24,6 @@ sensor_height = 57.7
 
 window_size = 10
 
-window_1 = [], window_2 = [], window_3 = []
 
 while True:
     distance1 = get_average(sensor1, window_size)
