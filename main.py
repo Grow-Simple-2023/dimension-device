@@ -23,7 +23,7 @@ sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 off1, off2, off3 = 4.977, 8.135, 5.637
 sensor_height = 57.7
 
-window_size = 10
+window_size = 100
 
 
 while True:
@@ -33,7 +33,7 @@ while True:
     sleep(0.5)
     distance3 = get_average(sensor3, window_size)
     sleep(0.5)
-
+    break
     print("---------------------------------")
     print("Sensor 1:", distance1/10, "cm")
     print("Sensor 2:", distance2/10, "cm")
