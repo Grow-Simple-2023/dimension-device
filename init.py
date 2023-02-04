@@ -21,6 +21,6 @@ for i in range(no_of_sensors):
     GPIO.output(GPIO_ports[i], GPIO.HIGH)
     print(f"Setting Sensor Address to: {0x2b+i}")
     device = VL53L0X(i2c)
-    device.set_address(0x2a+i)
+    device.set_address(0x2b+i)
     # GPIO.output(GPIO_ports[i], GPIO.LOW)
     sleep(0.1)
