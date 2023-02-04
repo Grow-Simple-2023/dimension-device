@@ -24,7 +24,7 @@ sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 # sensor_height = 57.7
 
 # total1, total2, total3 = 50.296, 53.157, 50.341
-total1, total2, total3 = 62.732, 65.922, 63.487
+total1, total2, total3 = 62.8, 65.938, 63.39
 
 window_size = 10
 
