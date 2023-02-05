@@ -25,7 +25,7 @@ while True:
         print("Item Detected ...")
         max_height = float('-inf')
         image = None
-        
+
         while (max_height <= 0) or conveyor.in_config():
             if conveyor.centre_config() and image is None:
                 print("Stopping Conveyer Belt For Image ...")
@@ -35,15 +35,15 @@ while True:
                 conveyor.start()
             max_height = max(max_height, tof_sensor.get_height())
 
-        
         if not image:
-            while not conveyor.centre_config(): pass
+            while not conveyor.centre_config():
+                pass
             print("Stopping Conveyer Belt For Image ...")
             conveyor.stop()
             image = camera.capture_image()
             print("Starting Conveyer Belt after Image ...")
             conveyor.start()
-        
+
         # if max_height <= 0:
         #     print("Error in Height. Please Check the Object ...")
         #     print("Starting Conveyer Belt ...")
@@ -53,8 +53,8 @@ while True:
         try:
             length, width = camera.get_length_width(image, max_height)
             assert length > 0 and width > 0
-        except E:
-            print(E)
+        except Exception as e:
+            print(e)
             print("Error in dimensions. Please Check the Object ...")
             print("Starting Conveyer Belt ...")
             conveyor.start()

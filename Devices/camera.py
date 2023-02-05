@@ -79,7 +79,7 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
         dimA = (dA * d1) / (pixelsPerMetric * d0)
         dimB = (dB * d1) / (pixelsPerMetric * d0)
 
-        if check_outlier(dimA, dimB):
+        if discard_outlier(dimA, dimB):
             continue
 
         max_dim_A = max(max_dim_A, dimA)
