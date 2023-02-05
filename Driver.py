@@ -2,6 +2,7 @@ import os
 from random import randint
 from Devices import camera, load_cell, tof_sensor, conveyor, send_data
 from time import sleep
+import init
 
 print("Stopping Conveyer Belt ...")
 conveyor.stop()
