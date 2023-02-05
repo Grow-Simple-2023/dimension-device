@@ -15,24 +15,6 @@ import cv2
 import sys
 import requests
 
-# -----------------------LOAD CELL----------------------------------
-# LOAD CELL
-print("Initializing Load cell ...")
-def get_weight():
-    return 3.0
-sleep(0.1)
-# -------------------------------------------------------------------
-
-
-# -----------------------SEND DATA----------------------------------
-# SEND DATA
-print("Initializing Send Data ...")
-def send_dimensions():
-    pass
-sleep(0.1)
-# -------------------------------------------------------------------
-
-
 # -----------------------TOF SENSORS----------------------------------
 # TOF SENSORS
 print("Initializing TOF sensors ...")
@@ -50,6 +32,23 @@ window_size = 10
 print("Initializing TOF sensors ...")
 maximum_distance = float('-inf')
 print("Initializing TOF sensors ...")
+sleep(0.1)
+# -------------------------------------------------------------------
+
+# -----------------------LOAD CELL----------------------------------
+# LOAD CELL
+print("Initializing Load cell ...")
+def get_weight():
+    return 3.0
+sleep(0.1)
+# -------------------------------------------------------------------
+
+
+# -----------------------SEND DATA----------------------------------
+# SEND DATA
+print("Initializing Send Data ...")
+def send_dimensions():
+    pass
 sleep(0.1)
 # -------------------------------------------------------------------
 
