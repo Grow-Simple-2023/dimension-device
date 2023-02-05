@@ -12,6 +12,7 @@ print("Initializing Camera ...")
 
 sleep(0.1)
 
+
 def discard_outlier(dimA, dimB) -> bool:
     if dimA > 60 or dimB > 60:
         return True
@@ -25,7 +26,9 @@ def midpoint(ptA, ptB):
 
 
 def capture_image():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2592)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1944)
     if not cap.isOpened():
         print("Error opening camera ...")
         sys.exit(1)
@@ -37,7 +40,6 @@ def capture_image():
 
 
 def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
-    cv2.imwrite("image.jpg", image)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
     edged = cv2.Canny(gray, 50, 100)
@@ -79,7 +81,7 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
 
         dimA = (dA * d1) / (pixelsPerMetric * d0)
         dimB = (dB * d1) / (pixelsPerMetric * d0)
-        
+
         if discard_outlier(dimA, dimB):
             print("Discarding outlier", dimA, dimB)
             continue
