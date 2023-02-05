@@ -1,7 +1,7 @@
 from time import sleep
 import RPi.GPIO as GPIO
 
-
+GPIO.setmode(GPIO.BCM)
 print("Initializing Conveyor ...")
 sensor_pins = [21, 26]
 
