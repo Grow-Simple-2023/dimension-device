@@ -7,6 +7,8 @@ import imutils
 import cv2
 import sys
 from time import sleep
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
 print("Initializing Camera ...")
 
@@ -26,17 +28,12 @@ def midpoint(ptA, ptB):
 
 
 def capture_image():
-    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 2592)
-    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1944)
-    if not cap.isOpened():
-        print("Error opening camera ...")
-        sys.exit(1)
-    ret, frame = cap.read()
-    if not ret:
-        print("Error capturing image...")
-        sys.exit(1)
-    return frame
+    camera = PiCamera()
+    rawCapture = PiRGBArray(camera)
+    sleep(0.1)
+    camera.capture(rawCapture, format="bgr")
+    image = rawCapture.array
+    return image
 
 
 def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
