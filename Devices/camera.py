@@ -25,7 +25,7 @@ def midpoint(ptA, ptB):
 
 
 def capture_image():
-    cap = cv2.VideoCapture("raspistill -o -")
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error opening camera ...")
         sys.exit(1)
