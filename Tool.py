@@ -26,7 +26,7 @@ while True:
         max_height = float('-inf')
         image = None
         while (max_height <= 0) or (not conveyor.out_config()):
-            if conveyer.centre_config() and image is None:
+            if conveyor.centre_config() and image is None:
                 print("Stopping Conveyer Belt For Image ...")
                 conveyor.stop()
                 image = camera.capture_image()
