@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 print("Initializing Conveyor ...")
-sensor_pins = [21, 26]
+sensor_pins = [21, 6]
 
 
 for pin in sensor_pins:
