@@ -20,7 +20,7 @@ sleep(0.1)
 
 def in_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    return out_put_array[0] == 1 and out_put_array[1] == 0
+    return out_put_array[0] == 0 and out_put_array[1] == 0
 
 
 def centre_config() -> bool:
@@ -30,7 +30,7 @@ def centre_config() -> bool:
 
 def out_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    return out_put_array[0] == 0 and out_put_array[1] == 0
+    return out_put_array[0] == 1 and out_put_array[1] == 0
 
 
 def start() -> None:
