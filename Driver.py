@@ -37,12 +37,19 @@ sleep(0.1)
 # TOF SENSORS
 print("Initializing TOF sensors ...")
 i2c = busio.I2C(board.SCL, board.SDA)
+print("Initializing TOF sensors ...")
 sensor1 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2b)
+print("Initializing TOF sensors ...")
 sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
+print("Initializing TOF sensors ...")
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
+print("Initializing TOF sensors ...")
 total1, total2, total3 = 62.74, 65.65, 63.53
+print("Initializing TOF sensors ...")
 window_size = 10
+print("Initializing TOF sensors ...")
 maximum_distance = float('-inf')
+print("Initializing TOF sensors ...")
 sleep(0.1)
 # -------------------------------------------------------------------
 
