@@ -98,3 +98,7 @@ def get_length_width(image, height):
     object_size = get_object_size(image,
                                   object_to_camera, height_of_camera, pixel_per_metric)
     return object_size["length"], object_size["breadth"]
+
+
+image = capture_image()
+print(get_length_width(image, 0))
