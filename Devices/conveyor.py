@@ -4,7 +4,7 @@ print("Initializing Conveyor ...")
 
 
 sensor_pins = [40, 37]
-
+GPIO.setmode(GPIO.BOARD)
 
 for pin in sensor_pins:
     print("Setting up pin in sensor: ", pin)
