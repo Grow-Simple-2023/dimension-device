@@ -1,10 +1,9 @@
 import busio
 import board
 import numpy as np
+from time import sleep
 import adafruit_vl53l0x
 from time import sleep, time
-from background import init
-from time import sleep
 
 print("Initializing TOF sensors ...")
 
