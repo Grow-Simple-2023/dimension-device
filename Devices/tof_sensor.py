@@ -3,6 +3,7 @@ import board
 import busio
 import numpy as np
 import adafruit_vl53l0x
+print("Initializing TOF sensors ...")
 
 
 def get_average(sensor, window_size):

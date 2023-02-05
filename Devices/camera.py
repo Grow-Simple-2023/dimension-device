@@ -6,7 +6,8 @@ import argparse
 import imutils
 import cv2
 import sys
-import subprocess
+
+print("Initializing Camera ...")
 
 
 def discard_outlier(dimA, dimB) -> bool:

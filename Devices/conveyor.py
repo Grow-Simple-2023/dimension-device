@@ -1,4 +1,7 @@
 import RPi.GPIO as GPIO
+print("Initializing Conveyor ...")
+
+
 
 sensor_pins = [40, 37]
 
@@ -30,10 +33,10 @@ def out_config() -> bool:
 def start() -> None:
     GPIO.output(conveyer_ports[1], GPIO.LOW)
     GPIO.output(conveyer_ports[0], GPIO.HIGH)
-    pass
+    return
 
 
 def stop() -> None:
     GPIO.output(conveyer_ports[0], GPIO.LOW)
     GPIO.output(conveyer_ports[1], GPIO.HIGH)
-    pass
+    return

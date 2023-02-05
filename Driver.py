@@ -3,6 +3,7 @@ from random import randint
 from Devices import camera, load_cell, tof_sensor, conveyor, send_data
 from time import sleep
 
+print("Stopping Conveyer Belt ...")
 conveyor.stop()
 
 print("<---------------------Welcome To Grow-Simplee Tool------------------------->\n\n")
@@ -57,7 +58,7 @@ while True:
             "length": length,
             "breadth": width,
             "height": max_height,
-            "weight": get_weight(),
+            "weight": load_cell.get_weight(),
         }
 
         items_info.append(item_info)
