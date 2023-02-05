@@ -11,7 +11,7 @@ for pin in sensor_pins:
     GPIO.setup(pin, GPIO.IN)
 
 conveyer_ports = [36, 38]
-for pin in converyer_ports:
+for pin in conveyer_ports:
     print("Setting up pin in coveyor: ", pin)
     GPIO.setup(pin, GPIO.OUT)
 
