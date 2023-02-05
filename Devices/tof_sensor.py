@@ -27,13 +27,12 @@ total1, total2, total3 = 62.74, 65.65, 63.53
 
 window_size = 10
 
-max_time = 10
+max_time = 50
 start = time()
 
 maximum_distance = float('-inf')
-print("Collecting Data")
 
-while time()-start < max_time:
+def get_height():
     distance1 = total1 - get_average(sensor1, window_size)/10
     distance2 = total2 - get_average(sensor2, window_size)/10
     distance3 = total3 - get_average(sensor3, window_size)/10
@@ -44,6 +43,6 @@ while time()-start < max_time:
     print("---------------------------------")
     maximum_distance = max([distance1, distance2, distance3, maximum_distance])
     print("Maximum distance:", maximum_distance, "cm")
-    sleep(0.1)
+    return maximum_distance
     # os.system('cls' if os.name == 'nt' else 'clear')
 
