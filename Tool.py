@@ -53,7 +53,8 @@ while True:
         try:
             length, width = camera.get_length_width(image, max_height)
             assert length > 0 and width > 0
-        except:
+        except E:
+            print(E)
             print("Error in dimensions. Please Check the Object ...")
             print("Starting Conveyer Belt ...")
             conveyor.start()
