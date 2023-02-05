@@ -37,6 +37,7 @@ def capture_image():
 
 
 def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
+    cv2.imwrite("image.jpg", image)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
     edged = cv2.Canny(gray, 50, 100)
