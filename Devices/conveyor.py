@@ -5,11 +5,11 @@ sensor_pins = [40, 37]
 GPIO.setmode(GPIO.BCM)
 
 for pin in sensor_pins:
-    GPIO.setup(sensor_pins[i], GPIO.IN)
+    GPIO.setup(pin, GPIO.IN)
 
 conveyer_ports = [36, 38]
 for pin in converyer_ports:
-    GPIO.setup(sensor_pins[i], GPIO.OUT)
+    GPIO.setup(pin, GPIO.OUT)
 
 
 def in_config() -> bool:
