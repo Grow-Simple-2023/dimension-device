@@ -37,6 +37,7 @@ def capture_image():
 
 
 def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
+    cv2.imsave("image.jpg", image)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
     edged = cv2.Canny(gray, 50, 100)
@@ -78,10 +79,11 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
 
         dimA = (dA * d1) / (pixelsPerMetric * d0)
         dimB = (dB * d1) / (pixelsPerMetric * d0)
-
+        
         if discard_outlier(dimA, dimB):
+            print("Discarding outlier", dimA, dimB)
             continue
-
+        print("Dimensions", dimA, dimB)
         max_dim_A = max(max_dim_A, dimA)
         max_dim_B = max(max_dim_B, dimB)
 
