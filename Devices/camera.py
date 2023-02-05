@@ -32,7 +32,7 @@ def capture_image():
     camera.resolution = camera.MAX_RESOLUTION
     rawCapture = PiRGBArray(camera)
     sleep(0.1)
-    camera.capture(rawCapture, format="bgr")
+    camera.capture(rawCapture, format="rgb")
     image = rawCapture.array
     return image
 
