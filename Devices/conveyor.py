@@ -20,19 +20,16 @@ sleep(0.1)
 
 def in_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    print("Conveyer Config: ", out_put_array)
     return out_put_array[0] == 0 and out_put_array[1] == 1
 
 
 def centre_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    print("Conveyer Config: ", out_put_array)
     return out_put_array[1] == 0
 
 
 def out_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    print("Conveyer Config: ", out_put_array)
     return out_put_array[0] == 1 and out_put_array[1] == 1
 
 
