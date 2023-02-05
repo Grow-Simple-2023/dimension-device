@@ -1,18 +1,12 @@
-from time import sleep, time
-import board
 import busio
+import board
 import numpy as np
 import adafruit_vl53l0x
+from time import sleep, time
+from background import init
+from time import sleep
+
 print("Initializing TOF sensors ...")
-
-
-def get_average(sensor, window_size):
-    window = []
-    for i in range(window_size):
-        window.append(sensor.range)
-        sleep(0.01)
-    return np.mean(window)
-
 
 i2c = busio.I2C(board.SCL, board.SDA)
 
@@ -20,18 +14,18 @@ sensor1 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2b)
 sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 
-# off1, off2, off3 = 4.977, 8.135, 5.637
-# sensor_height = 57.7
-
-# total1, total2, total3 = 50.296, 53.157, 50.341
 total1, total2, total3 = 62.74, 65.65, 63.53
-
 window_size = 10
 
-max_time = 50
-start = time()
-
 maximum_distance = float('-inf')
+
+sleep(0.1)
+def get_average(sensor, window_size):
+    window = []
+    for i in range(window_size):
+        window.append(sensor.range)
+        sleep(0.01)
+    return np.mean(window)
 
 def get_height():
     distance1 = total1 - get_average(sensor1, window_size)/10

@@ -6,9 +6,11 @@ import argparse
 import imutils
 import cv2
 import sys
+from time import sleep
 
 print("Initializing Camera ...")
 
+sleep(0.1)
 
 def discard_outlier(dimA, dimB) -> bool:
     if dimA > 60 or dimB > 60:
