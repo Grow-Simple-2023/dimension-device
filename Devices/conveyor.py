@@ -1,16 +1,16 @@
 from time import sleep
 import RPi.GPIO as GPIO
+
+
 print("Initializing Conveyor ...")
+sensor_pins = [21, 26]
 
-
-sensor_pins = [40, 37]
-GPIO.setmode(GPIO.BOARD)
 
 for pin in sensor_pins:
     print("Setting up pin in sensor: ", pin)
     GPIO.setup(pin, GPIO.IN)
 
-conveyer_ports = [36, 38]
+conveyer_ports = [16, 20]
 for pin in conveyer_ports:
     print("Setting up pin in coveyor: ", pin)
     GPIO.setup(pin, GPIO.OUT)

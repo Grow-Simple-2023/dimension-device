@@ -4,6 +4,7 @@ import numpy as np
 from time import sleep
 import adafruit_vl53l0x
 from time import sleep, time
+from background import reset, init
 
 print("Initializing TOF sensors ...")
 
@@ -13,12 +14,9 @@ sensor1 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2b)
 sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 
-total1, total2, total3 = 62.74, 65.65, 63.53
-window_size = 10
-
-maximum_distance = float('-inf')
-
 sleep(0.1)
+
+
 def get_average(sensor, window_size):
     window = []
     for i in range(window_size):
@@ -26,7 +24,11 @@ def get_average(sensor, window_size):
         sleep(0.01)
     return np.mean(window)
 
+
 def get_height():
+    total1, total2, total3 = 62.74, 65.65, 63.53
+    window_size = 10
+    maximum_distance = float('-inf')
     distance1 = total1 - get_average(sensor1, window_size)/10
     distance2 = total2 - get_average(sensor2, window_size)/10
     distance3 = total3 - get_average(sensor3, window_size)/10
@@ -39,4 +41,3 @@ def get_height():
     print("Maximum distance:", maximum_distance, "cm")
     return maximum_distance
     # os.system('cls' if os.name == 'nt' else 'clear')
-
