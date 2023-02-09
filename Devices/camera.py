@@ -51,7 +51,16 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
 
     max_dim_A = float('-inf')
     max_dim_B = float('-inf')
+
+    h, w = gray.shape[:2]
+
+    cnts_filtered = []
     for c in cnts:
+        (x, y, w, h) = cv2.boundingRect(c)
+        if y > h/4 and y < h*3/4:
+            cnts_filtered.append(c)
+
+    for c in cnts_filtered:
         if cv2.contourArea(c) < 100:
             continue
 
@@ -151,5 +160,5 @@ def get_length_width(image, height):
     return object_size["length"], object_size["breadth"]
 
 
-image = capture_image("image6.jpg")
+image = capture_image("image2.jpg")
 print(get_length_width(image, 0))
