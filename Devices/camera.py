@@ -18,6 +18,7 @@ if not os.path.exists("temp_images"):
 
 sleep(0.1)
 
+
 def discard_outlier(dimA, dimB) -> bool:
     if dimA > 60 or dimB > 60:
         return True
@@ -32,7 +33,7 @@ def midpoint(ptA, ptB):
 
 def capture_image():
     image_path = f"./temp_images/{randint(0, 100000)}.jpg"
-    subprocess.run(f"raspistill -o {img_path}")
+    subprocess.run(f"raspistill -t 50ms -sh 80 -br 80 -o {img_path}")
     return img_path
 
 
