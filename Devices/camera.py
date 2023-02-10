@@ -7,11 +7,16 @@ import imutils
 import cv2
 import sys
 from time import sleep
+import subprocess
+from random import randint
+import os
 
 print("Initializing Camera ...")
+if not os.path.exists("temp_images"):
+    os.mkdir("temp_images")
+
 
 sleep(0.1)
-
 
 def discard_outlier(dimA, dimB) -> bool:
     if dimA > 60 or dimB > 60:
@@ -25,17 +30,14 @@ def midpoint(ptA, ptB):
     return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
 
 
-def capture_image(img_path):
-    # camera = PiCamera()
-    # camera.resolution = camera.MAX_RESOLUTION
-    # rawCapture = PiRGBArray(camera)
-    # sleep(0.1)
-    # camera.capture(rawCapture, format="bgr")
-    # image = rawCapture.array
-    return cv2.imread(img_path)
+def capture_image():
+    image_path = f"./temp_images/{randint(0, 100000)}.jpg"
+    subprocess.run(f"raspistill -o {img_path}")
+    return img_path
 
 
-def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
+def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
+    image = cv.imread(image_path)
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
     edged = cv2.Canny(gray, 50, 100)
@@ -54,13 +56,13 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
 
     h, w = gray.shape[:2]
 
-    cnts_filtered = []
-    for c in cnts:
-        (x, y, w, h) = cv2.boundingRect(c)
-        if y > h/4 and y < h*3/4:
-            cnts_filtered.append(c)
+    # cnts_filtered = []
+    # for c in cnts:
+    #     (x, y, w, h) = cv2.boundingRect(c)
+    #     if y > h/4 and y < h*3/4:
+    #         cnts_filtered.append(c)
 
-    for c in cnts_filtered:
+    for c in cnts:
         if cv2.contourArea(c) < 100:
             continue
 
@@ -107,8 +109,8 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
                     (int(trbrX + 10), int(trbrY)), cv2.FONT_HERSHEY_SIMPLEX,
                     0.65, (255, 255, 255), 2)
 
-        cv2.imshow("Image", orig)
-        cv2.waitKey(0)
+        # cv2.imshow("Image", orig)
+        # cv2.waitKey(0)
 
         max_dim_A = max(max_dim_A, dimA)
         max_dim_B = max(max_dim_B, dimB)
@@ -150,15 +152,15 @@ def get_object_size(image, distance_bet_cam_obj, height_of_camera, pixel_per_met
     # return {"length": max(max_dim_A, max_dim_B), "breadth": min(max_dim_A, max_dim_B)}
 
 
-def get_length_width(image, height):
+def get_length_width(image_path, height):
 
     height_of_camera = 57.7
     object_to_camera = height_of_camera - height
     pixel_per_metric = 45
-    object_size = get_object_size(image,
+    object_size = get_object_size(image_path,
                                   object_to_camera, height_of_camera, pixel_per_metric)
     return object_size["length"], object_size["breadth"]
 
 
-image = capture_image("image2.jpg")
+image_path = capture_image()
 print(get_length_width(image, 0))
