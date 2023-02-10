@@ -19,8 +19,8 @@ i2c = busio.I2C(board.SCL, board.SDA)
 sensor1 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2b)
 sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
+sensor4 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2e)
 
-total1, total2, total3 = 62.74, 65.65, 63.53
 window_size = 20
 
 while True:
@@ -30,7 +30,9 @@ while True:
     sleep(0.2)
     distance3 = get_average(sensor3, window_size)
     sleep(0.2)
-    print(f'{total1 - distance1/10},{total2 - distance2/10},{total3 - distance3/10}')
+    distance4 = get_average(sensor4, window_size)
+    sleep(0.2)
+    print(f'{distance1/10},{distance2/10},{distance3/10},{distance4/10}')
     # print("---------------------------------")
     # print("Sensor 1:", total1 - distance1/10, "cm")
     # print("Sensor 2:", total2 - distance2/10, "cm")
