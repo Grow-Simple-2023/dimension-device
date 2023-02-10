@@ -14,10 +14,6 @@ while True:
     conveyor.start()
     items_info = []
 
-    if not conveyor.out_config():
-        print("Please Clear the Conveyer Belt ...")
-        continue
-
     while True:
         print(
             "--------------------------------------------------------------------------\n")
