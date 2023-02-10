@@ -1,5 +1,6 @@
 from time import sleep
 from Devices import conveyor, camera, load_cell, send_data, tof_sensor
+import requests
 
 print("Stopping Conveyer Belt ...")
 conveyor.stop()
@@ -7,6 +8,7 @@ conveyor.stop()
 print("<---------------------Welcome To Grow-Simplee Tool------------------------->\n\n")
 
 while True:
+    print("--------------------------------------------------------------------------\n")
     print("Please start inserting Similar Items into the tool\n")
     input("Press Enter to continue...")
     print("Starting Conveyer Belt ...")
@@ -18,7 +20,7 @@ while True:
         continue
 
     while True:
-
+        print("--------------------------------------------------------------------------\n")
         print("Waiting for Item ...")
         while not conveyor.in_config():
             pass
@@ -60,6 +62,7 @@ while True:
         item_id = input("Please Enter Item ID: ")
 
         item_info = {
+            "item_id": item_id,
             "length": length,
             "breadth": width,
             "height": max_height,
@@ -72,8 +75,10 @@ while True:
         yes_no = input("1. Continue similar objects (y / n). \n ")
         if yes_no == 'n':
             print("Sending Data to Server ...")
-            print(items_info)
+            response = requests.post("http://localhost:8000/item-dimensions", json=items_info)
+            rejected_items = response.json()
             print("Sent info to Server...")
+            print("Rejected Items: ", rejected_items)
             break
 
         sleep(0.05)
