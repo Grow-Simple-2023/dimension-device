@@ -32,7 +32,7 @@ def midpoint(ptA, ptB):
 
 
 def capture_image():
-    image_path = f"./temp_images/{randint(0, 100000)}.jpg"
+    img_path = f"./temp_images/{randint(0, 100000)}.jpg"
     subprocess.run(f"raspistill -t 50ms -sh 80 -br 80 -o {img_path}")
     return img_path
 
@@ -164,4 +164,4 @@ def get_length_width(image_path, height):
 
 
 image_path = capture_image()
-print(get_length_width(image, 0))
+print(get_length_width(image_path, 0))
