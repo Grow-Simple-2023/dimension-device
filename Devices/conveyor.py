@@ -24,13 +24,15 @@ def in_config() -> bool:
 
 
 def centre_config() -> bool:
-    configs = [[0, 0, 1, 0, 0], [0, 1, 1, 1, 0], [0, 0, 1, 1, 0], [0, 1, 1, 1, 1], [1, 1, 1, 1, 1]]
+    configs = [[0, 0, 1, 0, 0], [0, 1, 1, 1, 0], [
+        0, 0, 1, 1, 0], [0, 1, 1, 1, 1], [1, 1, 1, 1, 1]]
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
     return out_put_array in configs
 
+
 def out_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    return out_put_array == [0, 0, 0, 0, 1]
+    return out_put_array == [0, 0, 0, 0, 1] or out_put_array == [0, 0, 0, 0, 0]
 
 
 def start() -> None:
