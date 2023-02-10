@@ -21,7 +21,7 @@ sensor2 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2c)
 sensor3 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2d)
 sensor4 = adafruit_vl53l0x.VL53L0X(i2c, address=0x2e)
 
-window_size = 20
+window_size = 100
 
 while True:
     distance1 = get_average(sensor1, window_size)
