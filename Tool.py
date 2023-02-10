@@ -31,7 +31,7 @@ while True:
             if conveyor.centre_config() and image is None:
                 print("Stopping Conveyer Belt For Image ...")
                 conveyor.stop()
-                image = camera.capture_image()
+                image = camera.capture_image(brightness=50, contrast=50)
                 print("Starting Conveyer Belt after Image ...")
                 conveyor.start()
             max_height = max(max_height, tof_sensor.get_height())
