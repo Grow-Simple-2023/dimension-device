@@ -72,6 +72,9 @@ while True:
         print("Item Removed ...")
         yes_no = input("1. Continue similar objects (y / n). \n ")
         if yes_no == 'n':
+            if len(items_info) <= 2: 
+                print("Please insert at least 3 items ...")
+                continue
             print(items_info)
             print("Sending Data to Server ...")
             response = requests.post(
