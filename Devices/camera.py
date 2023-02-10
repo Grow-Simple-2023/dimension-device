@@ -159,7 +159,7 @@ def get_length_width(image_path, height):
 
     height_of_camera = 57.7
     object_to_camera = height_of_camera - height
-    pixel_per_metric = 45
+    pixel_per_metric = 45.7
     object_size = get_object_size(image_path,
                                   object_to_camera, height_of_camera, pixel_per_metric)
     return object_size["length"], object_size["breadth"]
