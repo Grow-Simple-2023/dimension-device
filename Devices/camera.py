@@ -66,8 +66,8 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
             maximum_cnt = c
     
     cnts = [maximum_cnt]
+    print("Filtered contour", len(cnts))
     for c in cnts:
-
         orig = image.copy()
         box = cv2.minAreaRect(c)
         box = cv2.cv.BoxPoints(box) if imutils.is_cv2() else cv2.boxPoints(box)
