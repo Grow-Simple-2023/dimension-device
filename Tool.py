@@ -77,9 +77,10 @@ while True:
         print("Item Removed ...")
         yes_no = input("1. Continue similar objects (y / n). \n ")
         if yes_no == 'n':
+            print(items_info)
             print("Sending Data to Server ...")
             response = requests.post(
-                "http://localhost:8000/item-dimensions", json=items_info)
+                "http://192.168.205.139:8000/item-dimensions", json=items_info)
             rejected_items = response.json()
             print("Sent info to Server...")
             print("Rejected Items: ", rejected_items)

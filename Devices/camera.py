@@ -33,7 +33,7 @@ def midpoint(ptA, ptB):
 
 def capture_image(contrast, brightness):
     img_path = f"./temp_images/{randint(0, 100000)}.jpg"
-    subprocess.run(["raspistill", "-t", "50ms", "-sh",
+    subprocess.run(["raspistill", "-t", "1000ms", "-sh",
                    str(contrast), "-br", str(brightness), "-o", img_path])
     return img_path
 
