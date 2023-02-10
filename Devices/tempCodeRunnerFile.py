@@ -1,2 +1,2 @@
-2.imshow("Image", orig)
+("Image", orig)
         cv2.waitKey(0)
