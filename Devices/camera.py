@@ -165,5 +165,5 @@ def get_length_width(image_path, height):
     return object_size["length"], object_size["breadth"]
 
 
-image_path = capture_image(brightness=65, contrast=80)
+image_path = capture_image(brightness=60, contrast=50)
 print(get_length_width(image_path, 0))
