@@ -5,7 +5,7 @@ from adafruit_vl53l0x import VL53L0X
 
 i2c = board.I2C()
 
-no_of_sensors = 3
+no_of_sensors = 4
 # GPIO_ports = [15, 16, 18, 13, 22]
 GPIO_ports = [22, 23, 24, 27, 25]
 
