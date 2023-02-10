@@ -2,12 +2,11 @@ from time import sleep
 from Devices import conveyor, camera, load_cell, send_data, tof_sensor
 import requests
 
-print("Stopping Conveyer Belt ...")
-conveyor.stop()
-
 print("<---------------------Welcome To Grow-Simplee Tool------------------------->\n\n")
 
 while True:
+    print("Stopping Conveyer Belt ...")
+    conveyor.stop()
     print("--------------------------------------------------------------------------\n")
     print("Please start inserting Similar Items into the tool\n")
     input("Press Enter to continue...")
