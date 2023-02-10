@@ -20,7 +20,8 @@ while True:
         continue
 
     while True:
-        print("--------------------------------------------------------------------------\n")
+        print(
+            "--------------------------------------------------------------------------\n")
         print("Waiting for Item ...")
         while not conveyor.in_config():
             pass
@@ -30,7 +31,9 @@ while True:
         image = None
 
         while (max_height <= 0) or not conveyor.out_config():
+            print(conveyor.centre_config())
             if conveyor.centre_config() and image is None:
+                print(conveyor.centre_config())
                 print("Stopping Conveyer Belt For Image ...")
                 conveyor.stop()
                 image = camera.capture_image(brightness=50, contrast=50)
@@ -75,7 +78,8 @@ while True:
         yes_no = input("1. Continue similar objects (y / n). \n ")
         if yes_no == 'n':
             print("Sending Data to Server ...")
-            response = requests.post("http://localhost:8000/item-dimensions", json=items_info)
+            response = requests.post(
+                "http://localhost:8000/item-dimensions", json=items_info)
             rejected_items = response.json()
             print("Sent info to Server...")
             print("Rejected Items: ", rejected_items)
