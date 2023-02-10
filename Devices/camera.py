@@ -58,15 +58,15 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
 
     h, w = gray.shape[:2]
 
-    # cnts_filtered = []
-    # for c in cnts:
-    #     (x, y, w, h) = cv2.boundingRect(c)
-    #     if y > h/4 and y < h*3/4:
-    #         cnts_filtered.append(c)
     print("No. of Objects Detected: ", len(cnts))
+    maximum_cnt, max_area = None, float('-inf')
     for c in cnts:
-        if cv2.contourArea(c) < 100:
-            continue
+        if max_area < cv2.contourArea(c):
+            max_area = cv2.contourArea(c)
+            maximum_cnt = c
+    
+    cnts = [maximum_cnt]
+    for c in cnts:
 
         orig = image.copy()
         box = cv2.minAreaRect(c)
