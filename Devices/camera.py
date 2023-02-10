@@ -40,7 +40,7 @@ def capture_image(contrast, brightness):
 
 def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
     image = cv2.imread(image_path)
-    s, l, s1, l1 = [2, 30, 2, 45]
+    s, l, s1, l1 = [0, 30, 0, 45]
     y, h, x, w = s*pixel_per_metric, l*pixel_per_metric, s1 * \
         pixel_per_metric, l1*pixel_per_metric
     image = image[int(y):int(y+h), int(x):int(x+w)]
