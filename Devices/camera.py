@@ -40,6 +40,7 @@ def capture_image(contrast, brightness):
 
 def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
     image = cv2.imread(image_path)
+    height, width = image.shape[:2]
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
     edged = cv2.Canny(gray, 50, 100)
@@ -61,10 +62,13 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
     print("No. of Objects Detected: ", len(cnts))
     maximum_cnt, max_area = None, float('-inf')
     for c in cnts:
+        x, y, w, h = cv2.boundingRect(c)
+        if x < width/3 or x > 2*width/3 or y < height/3 or y > 2*height/3:
+            continue
         if max_area < cv2.contourArea(c):
             max_area = cv2.contourArea(c)
             maximum_cnt = c
-    
+
     cnts = [maximum_cnt]
     print("Filtered contour", len(cnts))
     for c in cnts:

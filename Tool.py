@@ -35,7 +35,7 @@ while True:
                 print(conveyor.centre_config())
                 print("Stopping Conveyer Belt For Image ...")
                 conveyor.stop()
-                image = camera.capture_image(brightness=50, contrast=50)
+                image = camera.capture_image(brightness=50, contrast=90)
                 print("Starting Conveyer Belt after Image ...")
                 conveyor.start()
             max_height = max(max_height, tof_sensor.get_height())
@@ -79,7 +79,7 @@ while True:
             print(items_info)
             print("Sending Data to Server ...")
             response = requests.post(
-                "http://192.168.205.139:8000/item-dimensions", json=items_info)
+                "http://192.168.205.139:8000/add-item-details", json=items_info)
             rejected_items = response.json()
             print("Sent info to Server...")
             print("Rejected Items: ", rejected_items)
