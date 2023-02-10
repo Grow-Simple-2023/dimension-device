@@ -40,8 +40,9 @@ def capture_image(contrast, brightness):
 
 def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
     image = cv2.imread(image_path)
-    s, l = [2, 40]
-    y, h, x, w = s*pixel_per_metric, l*pixel_per_metric, s*pixel_per_metric, l*pixel_per_metric
+    s, l, s1, l1 = [2, 30, 2, 45]
+    y, h, x, w = s*pixel_per_metric, l*pixel_per_metric, s1 * \
+        pixel_per_metric, l1*pixel_per_metric
     image = image[int(y):int(y+h), int(x):int(x+w)]
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
@@ -65,7 +66,8 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
     maximum_cnt, max_area = None, float('-inf')
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
-        if w/pixel_per_metric>35 or h/pixel_per_metric>35: continue
+        if w/pixel_per_metric > 35 or h/pixel_per_metric > 35:
+            continue
         if max_area < cv2.contourArea(c):
             max_area = cv2.contourArea(c)
             maximum_cnt = c
@@ -73,6 +75,8 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
     cnts = [maximum_cnt]
     print("Filtered contour", len(cnts))
     for c in cnts:
+        x, y, w, h = cv2.boundingRect(c)
+        print(w, h)
         orig = image.copy()
         box = cv2.minAreaRect(c)
         box = cv2.cv.BoxPoints(box) if imutils.is_cv2() else cv2.boxPoints(box)
@@ -170,5 +174,5 @@ def get_length_width(image_path, height):
     return object_size["length"], object_size["breadth"]
 
 
-# image_path = capture_image(contrast=50, brightness=60)
-# print(get_length_width(image_path, 2))
+image_path = capture_image(contrast=50, brightness=60)
+print(get_length_width(image_path, 2))
