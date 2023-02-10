@@ -40,10 +40,9 @@ def capture_image(contrast, brightness):
 
 def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_per_metric):
     image = cv2.imread(image_path)
-    s, l, s1, l1 = [0, 30, 0, 45]
-    y, h, x, w = s*pixel_per_metric, l*pixel_per_metric, s1 * \
-        pixel_per_metric, l1*pixel_per_metric
-    image = image[int(y):int(y+h), int(x):int(x+w)]
+    a, b = [10, 40]
+    a, b = a*pixel_per_metric, b*pixel_per_metric
+    image = image[:, a:b]
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray = cv2.GaussianBlur(gray, (7, 7), 0)
     edged = cv2.Canny(gray, 50, 100)
