@@ -68,14 +68,13 @@ while True:
         }
 
         items_info.append(item_info)
-
+        print(item_info)
         print("Item Removed ...")
         yes_no = input("1. Continue similar objects (y / n). \n ")
         if yes_no == 'n':
             if len(items_info) <= 2: 
                 print("Please insert at least 3 items ...")
                 continue
-            print(items_info)
             print("Sending Data to Server ...")
             response = requests.post(
                 "http://192.168.205.139:8000/add-item-details", json=items_info)
