@@ -110,6 +110,7 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
                     (int(trbrX + 10), int(trbrY)), cv2.FONT_HERSHEY_SIMPLEX,
                     0.65, (255, 255, 255), 2)
 
+        cv2.imsave(f"./temp_images/{randint(0, 100000)}.jpg", orig)
         # cv2.imshow("Image", orig)
         # cv2.waitKey(0)
 
