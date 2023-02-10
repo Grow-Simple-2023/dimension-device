@@ -33,7 +33,8 @@ def midpoint(ptA, ptB):
 
 def capture_image(brightness, contrast):
     img_path = f"./temp_images/{randint(0, 100000)}.jpg"
-    subprocess.run(["raspistill", "-t", "50ms", "-sh", str(contrast), "-br", str(brightness), "-o", img_path])
+    subprocess.run(["raspistill", "-t", "50ms", "-sh",
+                   str(contrast), "-br", str(brightness), "-o", img_path])
     return img_path
 
 
@@ -62,7 +63,7 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
     #     (x, y, w, h) = cv2.boundingRect(c)
     #     if y > h/4 and y < h*3/4:
     #         cnts_filtered.append(c)
-
+    print("No. of Objects Detected: ", len(cnts))
     for c in cnts:
         if cv2.contourArea(c) < 100:
             continue
@@ -164,5 +165,5 @@ def get_length_width(image_path, height):
     return object_size["length"], object_size["breadth"]
 
 
-image_path = capture_image(brightness=80, contrast=80)
+image_path = capture_image(brightness=65, contrast=80)
 print(get_length_width(image_path, 0))
