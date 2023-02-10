@@ -68,15 +68,16 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
         x, y, w, h = cv2.boundingRect(c)
         if w/pixel_per_metric > 35 or h/pixel_per_metric > 35:
             continue
-        if max_area < cv2.contourArea(c):
-            max_area = cv2.contourArea(c)
+        if max_area < w*h:
+            max_area = w*h
             maximum_cnt = c
 
     cnts = [maximum_cnt]
     print("Filtered contour", len(cnts))
+    
     for c in cnts:
         x, y, w, h = cv2.boundingRect(c)
-        print(w, h)
+        # print(w, h)
         orig = image.copy()
         box = cv2.minAreaRect(c)
         box = cv2.cv.BoxPoints(box) if imutils.is_cv2() else cv2.boxPoints(box)
