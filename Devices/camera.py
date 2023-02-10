@@ -31,10 +31,10 @@ def midpoint(ptA, ptB):
     return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
 
 
-def capture_image(img_path):
-    # img_path = f"./temp_images/{randint(0, 100000)}.jpg"
-    # subprocess.run(["raspistill", "-t", "50ms", "-sh",
-    #                str(contrast), "-br", str(brightness), "-o", img_path])
+def capture_image(contrast, brightness):
+    img_path = f"./temp_images/{randint(0, 100000)}.jpg"
+    subprocess.run(["raspistill", "-t", "50ms", "-sh",
+                   str(contrast), "-br", str(brightness), "-o", img_path])
     return img_path
 
 
@@ -112,8 +112,8 @@ def get_object_size(image_path, distance_bet_cam_obj, height_of_camera, pixel_pe
                     0.65, (255, 255, 255), 2)
 
         cv2.imwrite(f"./temp_images/{randint(0, 100000)}.jpg", orig)
-        cv2.imshow("Image", orig)
-        cv2.waitKey(0)
+        # cv2.imshow("Image", orig)
+        # cv2.waitKey(0)
 
         max_dim_A = max(max_dim_A, dimA)
         max_dim_B = max(max_dim_B, dimB)
@@ -165,5 +165,5 @@ def get_length_width(image_path, height):
     return object_size["length"], object_size["breadth"]
 
 
-image_path = capture_image("./28672.jpg")
+image_path = capture_image(contrast=50, brightness=60)
 print(get_length_width(image_path, 0))
