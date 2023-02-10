@@ -32,7 +32,7 @@ def centre_config() -> bool:
 
 def out_config() -> bool:
     out_put_array = [GPIO.input(pin) for pin in sensor_pins]
-    return out_put_array == [0, 0, 0, 0, 1] or out_put_array == [0, 0, 0, 0, 0]
+    return out_put_array == [0, 0, 0, 0, 1]
 
 
 def start() -> None:
