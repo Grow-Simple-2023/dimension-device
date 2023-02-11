@@ -28,7 +28,7 @@ def get_average(sensor, window_size):
 
 def get_height():
     total1, total2, total3, total4 = 61.388999999999996, 65.233, 63.222, 62.84400000000001
-    window_size = 5
+    window_size = 10
     maximum_distance = float('-inf')
     distance1 = total1 - get_average(sensor1, window_size)/10
     distance2 = total2 - get_average(sensor2, window_size)/10
